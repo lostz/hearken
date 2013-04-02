@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block body %}
+
+<div id="title">
+  <h1>{{ post.title }}</h1>
+  <span class="meta">{{ post.date }}</span>
+ 
+
+<div id="content">
+{{ post.html }}
+</div>
+
+
+<p></p>
+<hr />
+{% endblock %}

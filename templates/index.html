@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block body %}
+{% for post in posts %}
+<div class="post">
+	<h1>
+	
+	<a href="{{ post.link }}">{{ post.title }}</a>		
+	</h1>
+	<span class="post-date">{{ post.date }}</span>
+	{{ post.html }}
+</div>
+
+
+{% endfor %}
+
+<div class="pagination">
+	{% if prev %}
+  
+    <a href="{{ prev }}" class="older">Older</a>
+    {% else %}
+    <span class="previous">Older</span>
+
+  	{% endif %}
+<span>&middot;</span>
+	{% if next %}
+	<a href="{{ next }}" class="newer">Newer</a>  
+    <span class="previous">Newer</span>
+    {% else %}
+    <span class="previous">Newer</span>
+    {% endif %}
+  
+</div>
+
+ 
+{% endblock %}
