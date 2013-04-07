@@ -1,9 +1,8 @@
 #!/usr/bin/env python
-
+#coding=utf-8
 from glob import glob
 from jinja2 import Environment, FileSystemLoader
-import yaml,shutil,re,codecs
-from functools import partial
+import yaml,shutil,codecs
 from markdown import markdown
 trailing_slash = lambda x: x if x.endswith('/') else x+'/'
 
@@ -20,7 +19,6 @@ class Hearken(object):
         map(self.generate_post,self.posts)
 
 
-    title_sub = partial(re.compile(r'[^a-zA-Z0-9_\-]').sub, '')
 
 
     def load_posts(self):
@@ -34,7 +32,7 @@ class Hearken(object):
                 post  = lines[2]
             else:
                 continue
-            file_name = self.title_sub(date)+'.html'
+            file_name = title+'.html'
             print file_name
             self.posts.append(dict(title=title,date=date,post=post,html=markdown(post,extensions=['codehilite(guess_lang=False)']),link=file_name))
             self.posts.sort(lambda a,b: cmp(b['date'],a['date']))
